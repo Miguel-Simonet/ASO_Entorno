@@ -10,7 +10,7 @@
 
 <img src="exemplo-image.png" alt="exemplo imagem">
 
-> Este entorno de usuario sirve para facilitar a cualquier administrador en Windows una correcta gestion de usuarios y sus historiales.
+> Este entorno de usuario sirve para facilitar a cualquier administrador en Linux una correcta gestion de usuarios y sus historiales.
 
 ### Ajustes y mejoras
 
@@ -28,39 +28,27 @@ El proyecto esta en desarollo y las proximas acutalizaciones estara alrededor de
 
 Antes de empezar, verifique que usted sigue estos requisitos:
 <!---Estes são apenas requisitos de exemplo. Adicionar, duplicar ou remover conforme necessário--->
-* Você instalou a versão mais recente de `<linguagem / dependência / requeridos>`
-* Compatible con: `<Windows>`. Incompatible con `<Linux / Mac>`.
-* 
+* Usted ha instalado la version mas reciente de `<Linux>`
+* Compatible con: `<Linux / Mac>`. Incompatible con `<Windows>`.
+
 ## 🚀 Instalando <Entorno de Usuario>
 
 Para instalar <Entorno de Usuario>, siga estas etapas:
 
-Windows:
+Linux:
 ```
-<comando_de_instalação>
+<comando_de_instalación>
 ```
 
-## ☕ Usando <nome_do_projeto>
+## ☕ Usando <Entorno de Usuario>
 
 Para usar <Entorno de Usuario>, siga estas etapas:
 
 ```
-<exemplo_de_uso>
+<ejemplo_de_uso>
 ```
-
-Agregue comandos de ejecución y ejemplos que crea que los usuarios encontrarán útiles. ¡Proporciona una referencia de opciones para puntos de bonificación!
-
-## 📫 Contribuindo para <Entorno de Usuario>
-<!---Se o seu README for longo ou se você tiver algum processo ou etapas específicas que deseja que os contribuidores sigam, considere a criação de um arquivo CONTRIBUTING.md separado--->
-Para contribuir com <nome_do_projeto>, siga estas etapas:
-
-1. Bifurque este repositorio.
-2. Cree una rama: `git checkout -b <nombre_división>`.
-3. Haga sus cambios y confíelos: `git commit -m '<commit_message>'`
-4. Enviar a la rama original: `git push origin <nombre_proyecto> / <ubicación>`
-5. Cree la solicitud de extracción.
-
-Como alternativa, consulte la documentación de Github [como realizar una solicitud del pull](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
+<!--
+Agregue comandos de ejecución y ejemplos que crea que los usuarios encontrarán útiles. ¡Proporciona una referencia de opciones para puntos de bonificación!-->
 
 ## 🤝 Colaboradores
 
