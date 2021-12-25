@@ -10,17 +10,19 @@
 
 <img src="exemplo-image.png" alt="exemplo imagem">
 
-> Linha adicional de texto informativo sobre o que o projeto faz. Sua introdução deve ter cerca de 2 ou 3 linhas. Não exagere, as pessoas não vão ler.
+> Este entorno de usuario sirve para facilitar a cualquier administrador en Windows una correcta gestion de usuarios y sus historiales.
 
 ### Ajustes y mejoras
 
-El proyecto esta en desarollo y las proximas acutalizaciones estara al rededor de realizar las siguientes tarea:
+El proyecto esta en desarollo y las proximas acutalizaciones estara alrededor de realizar las siguientes tarea:
 
-- [ ] Tarefa 1
-- [ ] Tarefa 2
-- [ ] Tarefa 3
-- [ ] Tarefa 4
-- [ ] Tarefa 5
+- [ ] Tarefa 1: Hacer los menus de entorno.
+- [ ] Tarefa 2: Hacer el registro / login de usuarios.
+- [ ] Tarefa 3: Administración de los usuarios para solo administradores.
+- [ ] Tarefa 4: Administración de los grupos para solo administradores.
+- [ ] Tarefa 5: Comandos frecuentes con una ejecución mas amigable para los usuarios.
+- [ ] Tarefa 6: Estadisticas de que comandos han usado los usuarios.
+- [ ] Tarefa 7: Estadisticas de que variables de entorno han usado los usuarios.
 
 ## 💻 Pre-requisitos
 
@@ -29,9 +31,9 @@ Antes de empezar, verifique que usted sigue estos requisitos:
 * Você instalou a versão mais recente de `<linguagem / dependência / requeridos>`
 * Compatible con: `<Windows>`. Incompatible con `<Linux / Mac>`.
 * 
-## 🚀 Instalando <nome_do_projeto>
+## 🚀 Instalando <Entorno de Usuario>
 
-Para instalar o <nome_do_projeto>, siga estas etapas:
+Para instalar <Entorno de Usuario>, siga estas etapas:
 
 Windows:
 ```
@@ -40,53 +42,61 @@ Windows:
 
 ## ☕ Usando <nome_do_projeto>
 
-Para usar <nome_do_projeto>, siga estas etapas:
+Para usar <Entorno de Usuario>, siga estas etapas:
 
 ```
 <exemplo_de_uso>
 ```
 
-Adicione comandos de execução e exemplos que você acha que os usuários acharão úteis. Fornece uma referência de opções para pontos de bônus!
+Agregue comandos de ejecución y ejemplos que crea que los usuarios encontrarán útiles. ¡Proporciona una referencia de opciones para puntos de bonificación!
 
-## 📫 Contribuindo para <nome_do_projeto>
+## 📫 Contribuindo para <Entorno de Usuario>
 <!---Se o seu README for longo ou se você tiver algum processo ou etapas específicas que deseja que os contribuidores sigam, considere a criação de um arquivo CONTRIBUTING.md separado--->
 Para contribuir com <nome_do_projeto>, siga estas etapas:
 
-1. Bifurque este repositório.
-2. Crie um branch: `git checkout -b <nome_branch>`.
-3. Faça suas alterações e confirme-as: `git commit -m '<mensagem_commit>'`
-4. Envie para o branch original: `git push origin <nome_do_projeto> / <local>`
-5. Crie a solicitação de pull.
+1. Bifurque este repositorio.
+2. Cree una rama: `git checkout -b <nombre_división>`.
+3. Haga sus cambios y confíelos: `git commit -m '<commit_message>'`
+4. Enviar a la rama original: `git push origin <nombre_proyecto> / <ubicación>`
+5. Cree la solicitud de extracción.
 
-Como alternativa, consulte a documentação do GitHub em [como criar uma solicitação pull](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
+Como alternativa, consulte la documentación de Github [como realizar una solicitud del pull](https://help.github.com/en/github/collaborating-with-issues-and-pull-requests/creating-a-pull-request).
 
 ## 🤝 Colaboradores
 
-Agradecemos às seguintes pessoas que contribuíram para este projeto:
+Agradecemos a las siguientes personas que han contribuido en este proyecto:
 
 <table>
   <tr>
     <td align="center">
       <a href="#">
-        <img src="https://avatars3.githubusercontent.com/u/31936044" width="100px;" alt="Foto do Iuri Silva no GitHub"/><br>
+        <img src="https://avatars.githubusercontent.com/u/84403278?v=4" width="100px;" alt="Foto de Miguel Simonet no GitHub"/><br>
         <sub>
-          <b>Iuri Silva</b>
+          <b>Miguel Simonet</b>
         </sub>
       </a>
     </td>
     <td align="center">
       <a href="#">
-        <img src="https://s2.glbimg.com/FUcw2usZfSTL6yCCGj3L3v3SpJ8=/smart/e.glbimg.com/og/ed/f/original/2019/04/25/zuckerberg_podcast.jpg" width="100px;" alt="Foto do Mark Zuckerberg"/><br>
+        <img src="https://avatars.githubusercontent.com/u/80906229?v=4" width="100px;" alt="Foto de LemonTeaFox"/><br>
         <sub>
-          <b>Mark Zuckerberg</b>
+          <b>LemonTeaFox</b>
         </sub>
       </a>
     </td>
     <td align="center">
       <a href="#">
-        <img src="https://miro.medium.com/max/360/0*1SkS3mSorArvY9kS.jpg" width="100px;" alt="Foto do Steve Jobs"/><br>
+        <img src="https://avatars.githubusercontent.com/u/77339219?v=4" width="100px;" alt="Foto de Ferranvh"/><br>
         <sub>
-          <b>Steve Jobs</b>
+          <b>Ferranvh</b>
+        </sub>
+      </a>
+    </td>
+     <td align="center">
+      <a href="#">
+        <img src="https://avatars.githubusercontent.com/u/96493342?v=4" width="100px;" alt="Foto de Álvaro Mena"/><br>
+        <sub>
+          <b>Álvaro Mena</b>
         </sub>
       </a>
     </td>
@@ -95,6 +105,6 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
 
 ## 📝 Licença
 
-Esse projeto está sob licença. Veja o arquivo [LICENÇA](LICENSE.md) para mais detalhes.
+Este proyecto esta sujeto a una licencia de uso. Mira el archivo [LICENCIA](LICENSE.md) para mas detalles.
 
-[⬆ Voltar ao topo](#entorno-de-usuario)<br>
+[⬆ Volver al top](#entorno-de-usuario)<br>
