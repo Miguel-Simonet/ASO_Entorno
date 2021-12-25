@@ -1,4 +1,4 @@
-# Nome do projeto
+# Entorno de Usuario
 
 <!---Esses são exemplos. Veja https://shields.io para outras pessoas ou para personalizar este conjunto de escudos. Você pode querer incluir dependências, status do projeto e informações de licença aqui--->
 
@@ -12,9 +12,9 @@
 
 > Linha adicional de texto informativo sobre o que o projeto faz. Sua introdução deve ter cerca de 2 ou 3 linhas. Não exagere, as pessoas não vão ler.
 
-### Ajustes e melhorias
+### Ajustes y mejoras
 
-O projeto ainda está em desenvolvimento e as próximas atualizações serão voltadas nas seguintes tarefas:
+El proyecto esta en desarollo y las proximas acutalizaciones estara al rededor de realizar las siguientes tarea:
 
 - [x] Tarefa 1
 - [x] Tarefa 2
@@ -22,22 +22,16 @@ O projeto ainda está em desenvolvimento e as próximas atualizações serão vo
 - [ ] Tarefa 4
 - [ ] Tarefa 5
 
-## 💻 Pré-requisitos
+## 💻 Pre-requisitos
 
-Antes de começar, verifique se você atendeu aos seguintes requisitos:
+Antes de empezar, verifique que usted sigue estos requisitos:
 <!---Estes são apenas requisitos de exemplo. Adicionar, duplicar ou remover conforme necessário--->
 * Você instalou a versão mais recente de `<linguagem / dependência / requeridos>`
-* Você tem uma máquina `<Windows / Linux / Mac>`. Indique qual sistema operacional é compatível / não compatível.
-* Você leu `<guia / link / documentação_relacionada_ao_projeto>`.
-
+* Compatible con: `<Windows>`. Incompatible con `<Linux / Mac>`.
+* 
 ## 🚀 Instalando <nome_do_projeto>
 
 Para instalar o <nome_do_projeto>, siga estas etapas:
-
-Linux e macOS:
-```
-<comando_de_instalação>
-```
 
 Windows:
 ```
