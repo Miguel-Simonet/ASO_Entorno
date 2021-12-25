@@ -57,7 +57,7 @@ Agradecemos a las siguientes personas que han contribuido en este proyecto:
 <table>
   <tr>
     <td align="center">
-      <a href="#">
+      <a href="https://github.com/Miguel-Simonet">
         <img src="https://avatars.githubusercontent.com/u/84403278?v=4" width="100px;" alt="Foto de Miguel Simonet no GitHub"/><br>
         <sub>
           <b>Miguel Simonet</b>
@@ -65,7 +65,7 @@ Agradecemos a las siguientes personas que han contribuido en este proyecto:
       </a>
     </td>
     <td align="center">
-      <a href="#">
+      <a href="https://github.com/LemonTeaFox">
         <img src="https://avatars.githubusercontent.com/u/80906229?v=4" width="100px;" alt="Foto de LemonTeaFox"/><br>
         <sub>
           <b>LemonTeaFox</b>
@@ -73,7 +73,7 @@ Agradecemos a las siguientes personas que han contribuido en este proyecto:
       </a>
     </td>
     <td align="center">
-      <a href="#">
+      <a href="https://github.com/Ferranvh">
         <img src="https://avatars.githubusercontent.com/u/77339219?v=4" width="100px;" alt="Foto de Ferranvh"/><br>
         <sub>
           <b>Ferranvh</b>
@@ -81,7 +81,7 @@ Agradecemos a las siguientes personas que han contribuido en este proyecto:
       </a>
     </td>
      <td align="center">
-      <a href="#">
+      <a href="https://github.com/alvaro-mena">
         <img src="https://avatars.githubusercontent.com/u/96493342?v=4" width="100px;" alt="Foto de Álvaro Mena"/><br>
         <sub>
           <b>Álvaro Mena</b>
