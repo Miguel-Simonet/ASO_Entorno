@@ -16,9 +16,9 @@
 
 El proyecto esta en desarollo y las proximas acutalizaciones estara al rededor de realizar las siguientes tarea:
 
-- [x] Tarefa 1
-- [x] Tarefa 2
-- [x] Tarefa 3
+- [ ] Tarefa 1
+- [ ] Tarefa 2
+- [ ] Tarefa 3
 - [ ] Tarefa 4
 - [ ] Tarefa 5
 
@@ -93,13 +93,8 @@ Agradecemos às seguintes pessoas que contribuíram para este projeto:
   </tr>
 </table>
 
-
-## 😄 Seja um dos contribuidores<br>
-
-Quer fazer parte desse projeto? Clique [AQUI](CONTRIBUTING.md) e leia como contribuir.
-
 ## 📝 Licença
 
 Esse projeto está sob licença. Veja o arquivo [LICENÇA](LICENSE.md) para mais detalhes.
 
-[⬆ Voltar ao topo](#nome-do-projeto)<br>
+[⬆ Voltar ao topo](#entorno-de-usuario)<br>
