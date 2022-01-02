@@ -91,7 +91,7 @@ Agradecemos a las siguientes personas que han contribuido en este proyecto:
   </tr>
 </table>
 
-## 📝 Licença
+## 📝 Licencia
 
 Este proyecto esta sujeto a una licencia de uso. Mira el archivo [LICENCIA](LICENSE.md) para mas detalles.
 
