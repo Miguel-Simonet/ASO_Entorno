@@ -16,13 +16,13 @@
 
 El proyecto esta en desarollo y las proximas acutalizaciones estara alrededor de realizar las siguientes tarea:
 
-- [ ] Tarefa 1: Hacer los menus de entorno.
-- [ ] Tarefa 2: Hacer el registro / login de usuarios.
-- [ ] Tarefa 3: Administración de los usuarios para solo administradores.
-- [ ] Tarefa 4: Administración de los grupos para solo administradores.
-- [ ] Tarefa 5: Comandos frecuentes con una ejecución mas amigable para los usuarios.
-- [ ] Tarefa 6: Estadisticas de que comandos han usado los usuarios.
-- [ ] Tarefa 7: Estadisticas de que variables de entorno han usado los usuarios.
+- [ ] Tarea 1: Hacer los menus de entorno.
+- [ ] Tarea 2: Hacer el registro / login de usuarios.
+- [ ] Tarea 3: Administración de los usuarios para solo administradores.
+- [ ] Tarea 4: Administración de los grupos para solo administradores.
+- [ ] Tarea 5: Comandos frecuentes con una ejecución mas amigable para los usuarios.
+- [ ] Tarea 6: Estadisticas de que comandos han usado los usuarios.
+- [ ] Tarea 7: Estadisticas de que variables de entorno han usado los usuarios.
 
 ## 💻 Pre-requisitos
 
