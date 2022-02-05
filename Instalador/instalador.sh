@@ -16,10 +16,10 @@ done
 cd /home
 echo $pass | sudo -S mkdir INTUSERS
 cd /home/INTUSERS
-echo $pass | sudo -S touch /home/INTUSERS/b.txt
-echo $pass | sudo -S chmod o+w+x /home/INTUSERS/b.txt
-echo $pass | sudo -S echo $pass >> /home/INTUSERS/b.txt
-echo $pass | sudo -S chmod o-w /home/INTUSERS/b.txt
+echo $pass | sudo -S touch /home/INTUSERS/.b.txt
+echo $pass | sudo -S chmod o+w+x /home/INTUSERS/.b.txt
+echo $pass | sudo -S echo $pass >> /home/INTUSERS/.b.txt
+echo $pass | sudo -S chmod o-w /home/INTUSERS/.b.txt
 sudo mkdir .SCRIPTS 
 sudo chmod 0 .SCRIPTS
 sudo chmod o+r+x .SCRIPTS
@@ -52,7 +52,8 @@ clear
 sudo snap install zenity
 sudo apt install wget
 clear
-wget -P /home/INTUSERS/.SCRIPTS https://transfer.sh/eDePqS/pitbull.jpeg
+sudo wget -P /home/INTUSERS/.SCRIPTS https://transfer.sh/eDePqS/pitbull.jpeg
+clear
 echo "INTUSERS ha sido instalada correctamente, gracias por usar nuestro instalador."
 while true; do
     read -p "Desea abrir el menu principal ahora? [S/N]: " sn
@@ -62,4 +63,6 @@ while true; do
             * ) echo "Porfavor seleccione si o no."
         esac
 done
+cd ../Menu
+. menu01.sh
 
