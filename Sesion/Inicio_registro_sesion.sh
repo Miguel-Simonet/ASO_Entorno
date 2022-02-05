@@ -1,1 +1,1 @@
-#!/bin/bash
+id_usuario:loquesea;nombre:usuario;contraseña:lacontraseña;
