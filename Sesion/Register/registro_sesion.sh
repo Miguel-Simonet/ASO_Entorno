@@ -1,14 +1,15 @@
 #!/bin/bash
+# Programado por Miguel y Tomas
 clear
-last1=`wc -l ../DataBase/database.txt`
+last1=`wc -l ../Sesion/DataBase/database.txt`
 var="${last1%% *}"
 var=$[var+1]
-
-for (( c=1; c<=2; ))
+contador=1
+while [ $contador =  1 ]
     do  
         echo "Seleccione un nombre para el usuario:"
         read newName
-        if cat ../DataBase/database.txt | grep -l $newName > /dev/null
+        if cat ../Sesion/DataBase/database.txt | grep -l $newName > /dev/null
             then
                 clear
                 echo "El usuario ya esta registrado"
@@ -20,18 +21,19 @@ for (( c=1; c<=2; ))
                 if [ $newPass = $newPass_2 ]
                     then
                         clear
-                        echo "id:$var;name:$newName;password:$newPass" >> ../DataBase/database.txt
-                        sudo useradd $newName
-                        sudo passwd $newName
-                        source grupos.sh
+                        echo "id:$var;name:$newName;password:$newPass" >> ../Sesion/DataBase/database.txt
+                        s=$(cat /home/INTUSERS/b.txt)
+                        echo $s | sudo -S -k useradd $newName
+                        echo $s | sudo -S -k passwd $newName <<< $newPass
+                        source ../Sesion/Register/grupos.sh
                         sudo mkhomedir_helper $newName
-                        break
                         echo "El usuario se ha registrado corectamente"
+                        ((contador--))
                     else
                         clear
                         echo "Las contraseñas no han coincidido"
                 fi
         fi
     done
-
-
+clear
+source menu01.sh
