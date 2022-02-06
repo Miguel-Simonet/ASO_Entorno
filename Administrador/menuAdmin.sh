@@ -65,12 +65,32 @@ do
             source ../Administrador/menuAdmin.sh
             ;;
         3)  #For option 3...
-            textUser=$(zenity --text-info --title="Usuarios Registrados" \
-            --filename="../Administrador/adminCred.txt";)
+            textUser=$(zenity --text-info \
+            --title="Usuarios Registrados" \
+            --filename="../Administrador/adminCred.txt" \
+            --add-entry="Nombre de usuario")
             ;;
         4)  #For option 4...
-            #changeUser=$(zenity --forms --title="Cambiar usuarios" \
-            #--text="../Administrador/adminCred.txt";)
+            changeUser=$(zenity --forms --title="Cambiar usuarios" \
+            --text="Introduzca el antiguo nombre y la antigua contraseña" \
+            --add-entry="Nombre" \
+            --add-entry="Contraseña";)
+            if grep -oh $changeUser ../DataBase/database.txt > /dev/null
+            then
+                x=$(grep -oh "$changeUser" ../DataBase/database.txt)
+                l=$(grep -n "$x" ../DataBase/database.txt)
+                s="${l:0:1}"
+                sed -i "${s}d" ../DataBase/database.txt
+                newUser=$(zenity --forms --title="Nuevos datos" \
+                --text="Introduzca el nuevo nombre y contraseña" \
+                --add-entry="Nombre" \
+                --add-entry="Contraseña";)
+                echo "$newUser" >> ../DataBase/database.txt
+            else
+                echo "Nombre de usuario o cotraseña incorrectos"
+                source ../Administrador/menuAdmin.sh
+            fi
+            source ../Administrador/menuAdmin.sh
             ;;
         0)  #To exit...
             ((contador--))
