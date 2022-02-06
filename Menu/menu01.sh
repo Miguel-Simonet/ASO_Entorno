@@ -5,9 +5,10 @@ menu=$(zenity --list \
 --column="ID" --column="Name" \
 "1" "Registro" \
 "2" "Iniciar Sesion" \
-"0" "Salir";)
+"3" "Salir";)
 # operate with the result of the menu
-while :
+contador=1
+while [ $contador =  1 ]
 do
     case $menu in
         1) #For option 1...
@@ -17,8 +18,8 @@ do
             source ../Sesion/Login/iniciar_sesion.sh
             ;;
         3)  #To exit...
-            clear
-            break
+            ((contador--))
             ;;
     esac
 done
+clear

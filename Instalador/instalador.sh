@@ -4,9 +4,9 @@ read -s -p "[sudo] contraseña para $USER: " pass
 echo $pass | sudo -S -k apt install xdotool
 clear
 echo "Bienvenido al instalador del entorno de trabajo INTUSERS"
-echo "A continuación procederemos con la instalación"
+echo "A continuacion procederemos con la instalacion"
 while true; do
-    read -p "Desea realizar la instalación de INTUSERS? [S/N]: " sn
+    read -p "Desea realizar la instalacion de INTUSERS? [S/N]: " sn
         case $sn in
             [S/s]* ) break;;
             [N/n]* ) sudo xdotool key --clearmodifiers Ctrl+Shift+Q key --clearmodifiers KP_Enter;;
@@ -23,32 +23,23 @@ echo $pass | sudo -S chmod o-w /home/INTUSERS/.b.txt
 sudo mkdir .SCRIPTS 
 sudo chmod 0 .SCRIPTS
 sudo chmod o+r+x .SCRIPTS
-sudo mkdir MARKETING
-sudo groupadd marketing
-sudo chgrp marketing MARKETING
-sudo chmod 0 MARKETING
-sudo chmod g+r+w+x MARKETING
-sudo mkdir FINANZAS
-sudo groupadd finanzas
-sudo chgrp finanzas FINANZAS
-sudo chmod 0 FINANZAS
-sudo chmod g+r+w+x FINANZAS
-sudo mkdir DIRECCION
-sudo groupadd direccion
-sudo chgrp direccion DIRECCION
-sudo chmod 0 DIRECCION
-sudo chmod g+r+w+x DIRECCION
-sudo mkdir ADMINISTRACION
-sudo groupadd administracion
-sudo chgrp administracion ADMINISTRACION
-sudo chmod 0 ADMINISTRACION
-sudo chmod g+r+w+x ADMINISTRACION
-sudo mkdir RRHH
-sudo groupadd rrhh
-sudo chgrp rrhh RRHH
-sudo chmod 0 RRHH
-sudo chmod g+r+w+x RRHH
-clear
+
+array=("marketing" "finanzas" "direccion" "administracion" "rrhh")
+for i in "${array[@]}"
+do     
+    tres_primeras_letras="${i:0:3}"
+    nombres_minus=$i
+    nombres_mayus=`echo $i | tr '[:lower:]' '[:upper:]'`
+    sudo mkdir $nombres_mayus
+    sudo groupadd $nombres_minus
+    sudo chgrp $nombres_minus $nombres_mayus
+    sudo chmod 0 $nombres_mayus
+    sudo chmod g+r+w+x $nombres_mayus
+    sudo touch /home/INTUSERS/$nombres_mayus/.calendar.$tres_primeras_letras
+    sudo echo "-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------" >> /home/INTUSERS/$nombres_mayus/.calendar.$tres_primeras_letras
+    
+done
+
 sudo snap install zenity
 sudo apt install wget
 clear
@@ -64,5 +55,4 @@ while true; do
         esac
 done
 cd ../Menu
-. menu01.sh
-
+ . menu01.sh
