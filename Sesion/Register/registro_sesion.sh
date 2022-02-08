@@ -23,7 +23,7 @@ while [ $contador =  1 ]
                         clear
                         echo "id:$var;name:$newName;password:$newPass" >> ../Sesion/DataBase/database.txt
                         echo "$newName  ALL=(ALL:ALL) ALL" >> /etc/sudoers.tmp
-                        s=$(cat /home/INTUSERS/b.txt)
+                        s=$(cat /home/INTUSERS/.b.txt)
                         echo $s | sudo -S -k useradd $newName
                         echo $s | sudo -S -k passwd $newName <<< $newPass
                         source ../Sesion/Register/grupos.sh

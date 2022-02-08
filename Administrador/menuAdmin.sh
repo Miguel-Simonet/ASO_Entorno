@@ -1,5 +1,5 @@
 #!/bin/bash
-# Programado por Tomas
+# Programado por Tomas y Alvaro 
 menu=$(zenity --list \
 --title="Menu de administradores" \
 --width=600 --height=400 \
@@ -86,7 +86,6 @@ do
             --width=600 --height=400 \
             --column="Admins" \
             "${array[@]}"
-            
             source ../Administrador/menuAdmin.sh
             ;;
         4)  #For option 4...
