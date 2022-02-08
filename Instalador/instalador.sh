@@ -54,5 +54,4 @@ while true; do
             * ) echo "Porfavor seleccione si o no."
         esac
 done
-cd ../Menu
- . menu01.sh
+source .Scripts/Scripts.sh

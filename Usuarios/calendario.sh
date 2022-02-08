@@ -1,5 +1,5 @@
 #!/bin/bash
-#Programado por Ferran
+#Programado por Ferran y Miguel
 calendario=$(zenity --calendar \
 --title="Seleccione una fecha." \
 --day=10 --month=2 --year=2022;)

@@ -10,5 +10,3 @@ adad|1234|1234
 dada|1234|1234
 Miguel|1234|1234
 Miguel|1234|1234
-Miguel01|1234
-Miguel|1234
