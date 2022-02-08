@@ -2,6 +2,7 @@
 # Programado por Tomas
 menu=$(zenity --list \
 --title="Menu de administradores" \
+--width=600 --height=400 \
 --column="ID" --column="Opcion" \
 "1" "Crear usuario administrador" \
 "2" "Modificar usuarios administradores" \
@@ -16,6 +17,7 @@ do
     case $menu in
         1) #For option 1...
             addAdmin=$(zenity --forms --title="Crear administrador" \
+            --width=600 --height=400 \
             --text="Añadir nuevo administrador" \
             --add-entry="Nombre" \
             --add-entry="Contraseña" \
@@ -37,6 +39,7 @@ do
                             echo "$addAdmin" >> ../Administrador/adminCred.txt
                         else
                             wrongPass=$(zenity --warning \
+                            --width=300 --height=200 \
                             --text="Las contraseñas no coinciden";)
                             source ../Administrador/menuAdmin.sh
                     fi
@@ -45,6 +48,7 @@ do
             ;;
         2)  #For option 2...
             changeAdmin=$(zenity --forms --title="Cambiar administrador" \
+            --width=600 --height=400 \
             --text="Introduzca el antiguo nombre y la antigua contraseña" \
             --add-entry="Nombre" \
             --add-entry="Contraseña";)
@@ -54,6 +58,7 @@ do
                 s="${l:0:1}"
                 sed -i "${s}d" ../Administrador/adminCred.txt
                 newAdmin=$(zenity --forms --title="Nuevos datos" \
+                --width=600 --height=400 \
                 --text="Introduzca el nuevo nombre y contraseña" \
                 --add-entry="Nombre" \
                 --add-entry="Contraseña";)
@@ -65,13 +70,28 @@ do
             source ../Administrador/menuAdmin.sh
             ;;
         3)  #For option 3...
-            textUser=$(zenity --text-info \
-            --title="Usuarios Registrados" \
-            --filename="../Administrador/adminCred.txt" \
-            --add-entry="Nombre de usuario")
+            array=()
+            last1=`wc -l adminCred.txt`
+            maximas_lineas="${last1%% *}"
+            maximas_lineas=$[maximas_lineas+1]
+            contador=1
+            while [ $contador -le $maximas_lineas ]
+            do
+                linea=`awk NR==${contador} adminCred.txt`
+                array=( "${array[@]}" "$linea" )
+                contador=$(( $contador + 1 ))
+            done
+            zenity --list \
+            --title="Lista de administradores" \
+            --width=600 --height=400 \
+            --column="Admins" \
+            "${array[@]}"
+            
+            source ../Administrador/menuAdmin.sh
             ;;
         4)  #For option 4...
             changeUser=$(zenity --forms --title="Cambiar usuarios" \
+            --width=600 --height=400 \
             --text="Introduzca el antiguo nombre y la antigua contraseña" \
             --add-entry="Nombre" \
             --add-entry="Contraseña";)
@@ -82,6 +102,7 @@ do
                 s="${l:0:1}"
                 sed -i "${s}d" ../DataBase/database.txt
                 newUser=$(zenity --forms --title="Nuevos datos" \
+                --width=600 --height=400 \
                 --text="Introduzca el nuevo nombre y contraseña" \
                 --add-entry="Nombre" \
                 --add-entry="Contraseña";)
@@ -89,6 +110,26 @@ do
             else
                 echo "Nombre de usuario o cotraseña incorrectos"
                 source ../Administrador/menuAdmin.sh
+            fi
+            source ../Administrador/menuAdmin.sh
+            ;;
+        5)  #For option 5...
+            oldGroup=$(zenity --forms --title="Cambiar nombre de grupo" \
+            --width=600 --height=400 \
+            --text="A que grupo quieres cambiarle el nombre?" \
+            --add-entry="Nombre de grupo";)
+            if grep -oh $oldGroup /etc/group > /dev/null
+                then
+                    newGroup=$(zenity --forms --title="Cambiar nombre de grupo" \
+                    --width=600 --height=400 \
+                    --text="Cual sera el nombre nuevo?" \
+                    --add-entry="Nuevo nombre";)
+                    sudo groupmod -n $newGroup $oldGroup
+                else
+                    errorGroup=$(zenity --warning \
+                    --width=300 --height=200 \
+                    --text="Ese nombre de grupo no esta registrado";)
+                    source ../Administrador/menuAdmin.sh
             fi
             source ../Administrador/menuAdmin.sh
             ;;

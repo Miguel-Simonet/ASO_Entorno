@@ -1,13 +1,14 @@
-#!/bin/bash
-calendario=$(zenity --calendar \
---title="Seleccione una fecha." \
---day=10 --month=2 --year=2022
-;)
-s=$(cat /home/INTUSERS/b.txt)
-i=`echo $s | sudo -S -k cat /etc/group | grep $newUser | cut -d: -f1 | head -1`
-tres_primeras_letras="${i:0:3}"
-nombres_minus=$i
-nombres_mayus=`echo $i | tr '[:lower:]' '[:upper:]'`
-read -p "¿Que evento sucedera en este dia?" motivo
-sudo echo "$calendario  |   $motivo" >> /home/INTUSERS/$nombres_mayus/.calendar.$tres_primeras_letras
-sudo echo "-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------" >> /home/INTUSERS/$nombres_mayus/.calendar.$tres_primeras_letras
+array=()
+last1=`wc -l texto.txt`
+maximas_lineas="${last1%% *}"
+maximas_lineas=$[maximas_lineas+1]
+contador=1
+while [ $contador -le $maximas_lineas ]
+do
+    linea=`awk NR==${contador} text.txt`
+    array=( "${array[@]}" "$linea" )
+    contador=$(( $contador + 1 ))
+done
+for value in "${array[@]}"; do
+    echo $value
+done
