@@ -25,7 +25,7 @@ case $menu in
         passw_2=$(awk 'BEGIN { FS="|"};{print $3}' /var/tmp/admin_tmp.txt)
         echo $newName
         rm -r /var/tmp/admin_tmp.txt
-        if cat DataBase/adminCred.txt | grep -l $newName > /dev/null
+        if cat ../DataBase/adminCred.txt | grep -l $newName > /dev/null
             then
                 wrongPass=$(zenity --warning \
                 --text="El usuario ya se ha registrado";)
@@ -33,7 +33,7 @@ case $menu in
             else
                 if [ $passw_1 = $passw_2 ]
                     then
-                        echo "$addAdmin" >> DataBase/adminCred.txt
+                        echo "$addAdmin" >> ../DataBase/adminCred.txt
                     else
                         wrongPass=$(zenity --warning \
                         --width=300 --height=200 \
@@ -49,17 +49,15 @@ case $menu in
         --text="Introduzca el antiguo nombre y la antigua contraseña" \
         --add-entry="Nombre" \
         --add-entry="Contraseña";)
-        if grep -oh $changeAdmin DataBase/adminCred.txt > /dev/null
+        if grep -oh $changeAdmin ../DataBase/adminCred.txt > /dev/null
         then
-            l=$(grep -n "$changeAdmin" DataBaseadminCred.txt)
-            s="${l:0:1}"
-            sed -i "${s}d" ../AdministradoradminCred.txt
+            sed -i "/$changeAdmin/d" ../DataBase/adminCred.txt
             newAdmin=$(zenity --forms --title="Nuevos datos" \
             --width=600 --height=400 \
             --text="Introduzca el nuevo nombre y contraseña" \
             --add-entry="Nombre" \
             --add-entry="Contraseña";)
-            echo "$newAdmin" >> DataBase/adminCred.txt
+            echo "$newAdmin" >> ../DataBase/adminCred.txt
         else
             echo "Nombre de administrador o contraseña incorrectos"
             source Administrador/menuAdmin.sh
@@ -68,13 +66,13 @@ case $menu in
         ;;
     3)  #For option 3...
         array=()
-        last1=`wc -l DataBase/adminCred.txt`
+        last1=`wc -l ../DataBase/adminCred.txt`
         maximas_lineas="${last1%% *}"
         maximas_lineas=$[maximas_lineas+1]
         contador=1
         while [ $contador -le $maximas_lineas ]
         do
-            linea=`awk NR==${contador} DataBase/adminCred.txt`
+            linea=`awk NR==${contador} ../DataBase/adminCred.txt`
             array=( "${array[@]}" "$linea" )
             contador=$(( $contador + 1 ))
         done
