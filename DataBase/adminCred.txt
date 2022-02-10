@@ -1,13 +1,1 @@
-adada|1234|1234
-dada|1234|1234
-dada|1234|1234
-dada|1234|1234
-dada|1234|1234
-dada|1234|1234
-dada|1234|1234
-adad|1234|1234
-dada|1234|1234
-Miguel|1234|1234
-Miguel|1234|1234
-tomas|1234
-alvarito|1234
+name:Miguel;password:1234

@@ -33,7 +33,14 @@ case $menu in
             else
                 if [ $passw_1 = $passw_2 ]
                     then
-                        echo "$addAdmin" >> DataBase/adminCred.txt
+                        IFS='|' read -ra array <<< "$addAdmin"
+                        clear
+                        name_admin="${array[0]}"
+                        passwd_admin="${array[1]}"
+                        last1=`wc -l DataBase/adminCred.txt`
+                        var="${last1%% *}"
+                        var=$[var+1] 
+                        echo "id:$var;name:$name_admin;password:$passwd_admin" >> DataBase/adminCred.txt
                     else
                         wrongPass=$(zenity --warning \
                         --width=300 --height=200 \
@@ -49,9 +56,13 @@ case $menu in
         --text="Introduzca el antiguo nombre y la antigua contraseña" \
         --add-entry="Nombre" \
         --add-entry="Contraseña";)
-        if grep -oh $changeAdmin DataBase/adminCred.txt > /dev/null
+        IFS='|' read -ra array <<< "$changeAdmin"
+        clear
+        name_admin="${array[0]}"
+        passwd_admin="${array[1]}"
+        if grep -oh $name_admin DataBase/adminCred.txt > /dev/null
         then
-            sed -i "/$changeAdmin/d" DataBase/adminCred.txt
+            sed -i "/\b\($name_usuario\)\b/d" DataBase/adminCred.txt
             newAdmin=$(zenity --forms --title="Nuevos datos" \
             --width=600 --height=400 \
             --text="Introduzca el nuevo nombre y contraseña" \
@@ -59,7 +70,14 @@ case $menu in
             --add-entry="Contraseña";)
             echo "$newAdmin" >> DataBase/adminCred.txt
         else
-            echo "Nombre de administrador o contraseña incorrectos"
+            IFS='|' read -ra array_2 <<< "$newUser"
+            clear
+            name_admin="${array_2[0]}"
+            passwd_admin="${array_2[1]}"
+            last1=`wc -l DataBase/adminCred.txt`
+            var="${last1%% *}"
+            var=$[var+1] 
+            echo "id:$var;name:$name_admin;password:$passwd_admin" >> DataBase/adminCred.txt
             source Administrador/menuAdmin.sh
         fi
         source Administrador/menuAdmin.sh
@@ -96,7 +114,6 @@ case $menu in
         if grep -oh $name_usuario DataBase/database.txt > /dev/null
         then
             sed -i "/\b\($name_usuario\)\b/d" DataBase/database.txt
-            sed -i "4d" archivo.txt
             newUser=$(zenity --forms --title="Nuevos datos" \
             --width=600 --height=400 \
             --text="Introduzca el nuevo nombre y contraseña" \
@@ -108,7 +125,8 @@ case $menu in
             passwd_usuario="${array_2[1]}"
             last1=`wc -l DataBase/database.txt`
             var="${last1%% *}"
-             echo "id:$var;name:$name_usuario;password:$passwd_usuario" >> DataBase/database.txt
+            var=$[var+1] 
+            echo "id:$var;name:$name_usuario;password:$passwd_usuario" >> DataBase/database.txt
         else
             errorGroup=$(zenity --warning \
                 --width=300 --height=200 \
