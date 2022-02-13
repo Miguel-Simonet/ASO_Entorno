@@ -1,22 +1,7 @@
 #!/bin/bash
 # Programado por Tomas y Alvaro 
-contador=1
-while [ $contador = 1 ]
-do
-    menu=$(zenity --list \
-    --title="Menu de administradores" \
-    --width=600 --height=400 \
-    --column="ID" --column="Opcion" \
-    "1" "Crear usuario administrador" \
-    "2" "Modificar usuarios administradores" \
-    "3" "Mostrar usuarios administradores" \
-    "4" "Modificar usuarios" \
-    "5" "Modificar grupos" \
-    "6" "Salir";)
-    # operate with the result of the menu
-    case $menu in
-        1) #For option 1...
-            addAdmin=$(zenity --forms --title="Crear administrador" \
+function addAdmin(){
+    addAdmin=$(zenity --forms --title="Crear administrador" \
             --width=600 --height=400 \
             --text="Añadir nuevo administrador" \
             --add-entry="Nombre" \
@@ -49,9 +34,9 @@ do
                             --text="Las contraseñas no coinciden";)
                     fi
             fi
-            ;;
-        2)  #For option 2...
-            changeAdmin=$(zenity --forms --title="Cambiar administrador" \
+}
+function changeAdmin(){
+    changeAdmin=$(zenity --forms --title="Cambiar administrador" \
             --width=600 --height=400 \
             --text="Introduzca el antiguo nombre y la antigua contraseña" \
             --add-entry="Nombre" \
@@ -83,9 +68,9 @@ do
             
             fi
         
-            ;;
-        3)  #For option 3...
-            array=()
+}
+function mostrarAdmin(){
+                array=()
             last1=`wc -l DataBase/adminCred.txt`
             maximas_lineas="${last1%% *}"
             maximas_lineas=$[maximas_lineas+1]
@@ -101,9 +86,9 @@ do
             --width=600 --height=400 \
             --column="Admins" \
             "${array[@]}"
-            ;;
-        4)  #For option 4...
-            changeUser=$(zenity --forms --title="Cambiar usuarios" \
+}
+function changeUser(){
+    changeUser=$(zenity --forms --title="Cambiar usuarios" \
             --width=600 --height=400 \
             --text="Introduzca el antiguo nombre y la antigua contraseña" \
             --add-entry="Nombre" \
@@ -133,9 +118,9 @@ do
                     --width=300 --height=200 \
                     --text="Nombre de usuario o cotraseña incorrectos";)
             fi
-            ;;
-        5)  #For option 5...
-            oldGroup=$(zenity --forms --title="Cambiar nombre de grupo" \
+}
+function oldGroup(){
+    oldGroup=$(zenity --forms --title="Cambiar nombre de grupo" \
             --width=600 --height=400 \
             --text="A que grupo quieres cambiarle el nombre?" \
             --add-entry="Nombre de grupo";)
@@ -151,6 +136,36 @@ do
                     --width=300 --height=200 \
                     --text="Ese nombre de grupo no esta registrado";)
             fi
+}
+contador=1
+while [ $contador = 1 ]
+do
+    menu=$(zenity --list \
+    --title="Menu de administradores" \
+    --width=600 --height=400 \
+    --column="ID" --column="Opcion" \
+    "1" "Crear usuario administrador" \
+    "2" "Modificar usuarios administradores" \
+    "3" "Mostrar usuarios administradores" \
+    "4" "Modificar usuarios" \
+    "5" "Modificar grupos" \
+    "6" "Salir";)
+    # operate with the result of the menu
+    case $menu in
+        1) #For option 1...
+            addAdmin
+            ;;
+        2)  #For option 2...
+            changeAdmin
+            ;;
+        3)  #For option 3...
+            mostrarAdmin
+            ;;
+        4)  #For option 4...
+            changeUser
+            ;;
+        5)  #For option 5...
+            oldGroup
             ;;
         6)  #To exit...
             ((contador--))
