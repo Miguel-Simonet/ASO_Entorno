@@ -1,41 +1,46 @@
 #!/bin/bash
 clear
-
     function iniciar_sesion() {
         clear
-        echo "Que usuario desea hacer login?:"
-        read newUser
-
-        if grep -oh $newUser DataBase/adminCred.txt > /dev/null
+        UserInfo=$(zenity --forms --title="Login" \
+                        --text="Quien esta haciendo login?" \
+                        --add-entry="Nombre" \
+                        --add-entry="Contraseña")
+        IFS='|' read -ra arrayLogin <<< "$UserInfo"
+        name_usuario="${arrayLogin[0]}"
+        passwd_usuario="${arrayLogin[1]}"
+        if grep -oh $name_usuario DataBase/adminCred.txt > /dev/null
         then
-            read -s -p "Contraseña para el usuario aministrador:" adminPass
-            if grep $adminPass DataBase/adminCred.txt | grep -oh $newUser > /dev/null
+            if grep $passwd_usuario DataBase/adminCred.txt | grep -oh $name_usuario > /dev/null
             then
                 clear
                 source Administrador/menuAdmin.sh
                 else
-                echo "contraseña incorrecta para administrador"
+                error=$(zenity --warning \
+                    --width=300 --height=200 \
+                    --text="Cotraseña incorrecta para usuario administrador";)
             fi
         fi
 
-        if grep -oh $newUser DataBase/database.txt > /dev/null
+        if grep -oh $name_usuario DataBase/database.txt > /dev/null
             then
-                
-                echo "Introduzca contraseña para $newUser:"
-                read -s password
-            if grep $password DataBase/database.txt | grep -oh $newUser > /dev/null
+            if grep $passwd_usuario DataBase/database.txt | grep -oh $name_usuario > dev/null
                 then
                     s=$(cat /home/INTUSERS/b.txt)
-                    grupo_de_inicio=`echo $s | sudo -S -k cat /etc/group | grep $newUser | cut -d: -f1 | head -1`
+                    grupo_de_inicio=`echo $s | sudo -S -k cat /etc/group | grep $name_usuario | cut -d: -f1 | head -1`
                     echo $grupo_de_inicio
                     clear
                     source Sesion/Usuarios/$grupo_de_inicio/entorno.sh
 
                 else
-                    echo "contraseña incorrecta"
+                error=$(zenity --warning \
+                    --width=300 --height=200 \
+                    --text="Contraseña incorrecta para usuario";)
             fi
         else
-        echo "Usuario no registrado"
+            error=$(zenity --warning \
+                    --width=300 --height=200 \
+                    --text="Este usuario no existe";)
         fi
     }
     function grupos_registro(){
@@ -117,7 +122,7 @@ clear
 
     }
 contador=1
-while [ $contador =  1 ]
+while [ $contador = 1 ]
 do
     menu=$(zenity --list \
         --title="Usuarios registrados" \

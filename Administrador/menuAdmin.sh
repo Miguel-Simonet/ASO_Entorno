@@ -36,6 +36,7 @@ function addAdmin(){
             fi
 }
 function changeAdmin(){
+            
     changeAdmin=$(zenity --forms --title="Cambiar administrador" \
             --width=600 --height=400 \
             --text="Introduzca el antiguo nombre y la antigua contraseña" \
@@ -45,6 +46,8 @@ function changeAdmin(){
             clear
             name_admin="${array[0]}"
             passwd_admin="${array[1]}"
+            line=$(grep $name_admin DataBase/adminCred.txt)
+            lineN=${line:3:1}
             if grep -oh $name_admin DataBase/adminCred.txt > /dev/null
             then
                 sed -i "/\b\($name_admin\)\b/d" DataBase/adminCred.txt
@@ -57,10 +60,12 @@ function changeAdmin(){
                 clear
                 name_admin="${array_2[0]}"
                 passwd_admin="${array_2[1]}"
-                last1=`wc -l DataBase/adminCred.txt`
-                var="${last1%% *}"
-                var=$[var+1] 
-                echo "id:$var;name:$name_admin;password:$passwd_admin" >> DataBase/adminCred.txt
+                echo "id:$lineN;name:$name_admin;password:$passwd_admin" >> DataBase/adminCred.txt
+                #Ordenar adminCred con ficheros temporales
+                    sort -n DataBase/adminCred.txt >> /tmp/sortTmp.txt
+                    rm DataBase/adminCred.txt
+                    cat /tmp/sortTmp.txt >> DataBase/adminCred.txt
+                    rm /tmp/sortTmp.txt
             else
                 errorGroup=$(zenity --warning \
                     --width=300 --height=200 \
@@ -97,6 +102,8 @@ function changeUser(){
             clear
             name_usuario="${array[0]}"
             passwd_usuario="${array[1]}"
+            line=$(grep $name_usuario DataBase/database.txt)
+            lineN=${line:3:1}
             if grep -oh $name_usuario DataBase/database.txt > /dev/null
             then
                 sed -i "/\b\($name_usuario\)\b/d" DataBase/database.txt
@@ -109,10 +116,13 @@ function changeUser(){
                 clear
                 name_usuario="${array_2[0]}"
                 passwd_usuario="${array_2[1]}"
-                last1=`wc -l DataBase/database.txt`
-                var="${last1%% *}"
-                var=$[var+1] 
-                echo "id:$var;name:$name_usuario;password:$passwd_usuario" >> DataBase/database.txt
+
+                echo "id:$lineN;name:$name_usuario;password:$passwd_usuario" >> DataBase/database.txt
+                #Ordenar database con ficheros temporales
+                    sort -n DataBase/database.txt >> /tmp/sortTmp.txt
+                    rm DataBase/database.txt
+                    cat /tmp/sortTmp.txt >> DataBase/database.txt
+                    rm /tmp/sortTmp.txt
             else
                 errorGroup=$(zenity --warning \
                     --width=300 --height=200 \
@@ -137,6 +147,11 @@ function oldGroup(){
                     --text="Ese nombre de grupo no esta registrado";)
             fi
 }
+function mostrarGrupo(){
+    showGroups=$(zenity --text-info \
+    --title="Groups" \
+    --filename=/etc/group;)
+}
 contador=1
 while [ $contador = 1 ]
 do
@@ -149,7 +164,8 @@ do
     "3" "Mostrar usuarios administradores" \
     "4" "Modificar usuarios" \
     "5" "Modificar grupos" \
-    "6" "Salir";)
+    "6" "Mostrar grupos"
+    "0" "Salir";)
     # operate with the result of the menu
     case $menu in
         1) #For option 1...
@@ -167,7 +183,9 @@ do
         5)  #For option 5...
             oldGroup
             ;;
-        6)  #To exit...
+        6)  #Opcion 6...
+            mostrarGrupo
+        0)  #To exit...
             ((contador--))
             ;;
     esac

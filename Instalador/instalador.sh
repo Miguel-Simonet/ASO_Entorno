@@ -3,15 +3,25 @@
 read -s -p "[sudo] contraseña para $USER: " pass
 echo $pass | sudo -S -k apt install xdotool
 clear
-echo "Bienvenido al instalador del entorno de trabajo INTUSERS"
-echo "A continuacion procederemos con la instalacion"
-while true; do
-    read -p "Desea realizar la instalacion de INTUSERS? [S/N]: " sn
-        case $sn in
-            [S/s]* ) break;;
-            [N/n]* ) sudo xdotool key --clearmodifiers Ctrl+Shift+Q key --clearmodifiers KP_Enter;;
-            * ) echo "Porfavor seleccione si o no."
-        esac
+    contador=0
+    while [ $contador = 0 ]; 
+    do 
+        clear
+        echo "Bienvenido al instalador del entorno de trabajo INTUSERS"
+        echo "A continuacion procederemos con la instalacion"
+        read -p "Desea realizar la instalacion de INTUSERS? [S/N]: " sn
+
+            if [[ $sn == "s" || $sn == "S" || $sn == "n" || $sn == "N" ]]
+              then
+                if [[ $sn == "s" || $sn == "S" ]]
+                  then
+                    contador=1
+                   else
+                    sudo xdotool key --clearmodifiers Ctrl+Shift+Q key --clearmodifiers KP_Enter
+                fi
+              else
+                echo "Porfavor seleccione si o no."
+            fi
 done
 cd /home
 echo $pass | sudo -S mkdir INTUSERS
@@ -36,6 +46,8 @@ do
     sudo chmod 0 $nombres_mayus
     sudo chmod g+r+w+x $nombres_mayus
     sudo touch /home/INTUSERS/$nombres_mayus/.calendar.$tres_primeras_letras
+    sudo chmod g+r+w+x /home/INTUSERS/$nombres_mayus/.calendar.$tres_primeras_letras
+    sudo chgrp $nombres_minus /home/INTUSERS/$nombres_mayus/.calendar.$tres_primeras_letras
     sudo echo "-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------" >> /home/INTUSERS/$nombres_mayus/.calendar.$tres_primeras_letras
     
 done
@@ -49,9 +61,8 @@ echo "INTUSERS ha sido instalada correctamente, gracias por usar nuestro instala
 while true; do
     read -p "Desea abrir el menu principal ahora? [S/N]: " sn
         case $sn in
-            [S/s]* ) break;;
+            [S/s]* ) . /home/ferranvh/Documentos/GitHub/ASO_Entorno/Scripts.sh;;
             [N/n]* ) sudo xdotool key --clearmodifiers Ctrl+Shift+Q key --clearmodifiers KP_Enter;;
             * ) echo "Porfavor seleccione si o no."
         esac
 done
-source .Scripts/Scripts.sh
