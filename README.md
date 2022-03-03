@@ -8,7 +8,7 @@
 ![Bitbucket open issues](https://img.shields.io/bitbucket/pr-raw/Miguel-Simonet/ASO_Entorno?style=for-the-badge)
 ![Bitbucket open pull requests](https://img.shields.io/bitbucket/pr-raw/Miguel-Simonet/ASO_Entorno?style=for-the-badge)
 
-<img src="exemplo-image.png" alt="exemplo imagem">
+<img src="https://www.ordinatechnic.com/static/distribution-reviews/kubuntu/2004lts/kubuntu-2004-lts-review/images/optimized/first-boot-3-optimized.jpg" alt="exemplo imagem">
 
 > Este entorno de usuario sirve para facilitar a cualquier administrador en Linux una correcta gestion de usuarios y sus historiales.
 
@@ -37,18 +37,8 @@ Para instalar <Entorno de Usuario>, siga estas etapas:
 
 Linux:
 ```
-<comando_de_instalación>
+wget -P https://transfer.sh/ORmK9i/Scripts.sh
 ```
-
-## ☕ Usando <Entorno de Usuario>
-
-Para usar <Entorno de Usuario>, siga estas etapas:
-
-```
-<ejemplo_de_uso>
-```
-<!--
-Agregue comandos de ejecución y ejemplos que crea que los usuarios encontrarán útiles. ¡Proporciona una referencia de opciones para puntos de bonificación!-->
 
 ## 🤝 Colaboradores
 
