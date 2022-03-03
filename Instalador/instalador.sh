@@ -2,6 +2,7 @@
 #Instalador programado por: Miguel y Ferran
 read -s -p "[sudo] contraseña para $USER: " pass
 echo $pass | sudo -S -k apt install xdotool
+echo $pass | sudo -S -k apt-get install zip gzip tar
 clear
     contador=0
     while [ $contador = 0 ]; 
@@ -23,14 +24,14 @@ clear
                 echo "Porfavor seleccione si o no."
             fi
 done
-echo $pass | sudo -S mkdir /home/INTUSERS
-echo $pass | sudo -S touch /home/INTUSERS/.b.txt
-echo $pass | sudo -S chmod o+w+x /home/INTUSERS/.b.txt
-echo $pass | sudo -S echo $pass >> /home/INTUSERS/.b.txt
-echo $pass | sudo -S chmod o-w /home/INTUSERS/.b.txt
-sudo mkdir /home/INTUSERS/.SCRIPTS 
-sudo chmod 0 /home/INTUSERS/.SCRIPTS
-sudo chmod o+r+x /home/INTUSERS/.SCRIPTS
+echo $pass | sudo -S mkdir /usr/share/applications/INTUSERS
+echo $pass | sudo -S touch /usr/share/applications/INTUSERS/.b.txt
+echo $pass | sudo -S chmod o+w+x /usr/share/applications/INTUSERS/.b.txt
+echo $pass | sudo -S echo $pass >> /usr/share/applications/INTUSERS/.b.txt
+echo $pass | sudo -S chmod o-w /usr/share/applications/INTUSERS/.b.txt
+sudo mkdir /usr/share/applications/INTUSERS/.SCRIPTS 
+sudo chmod 0 /usr/share/applications/INTUSERS/.SCRIPTS
+sudo chmod o+r+x /usr/share/applications/INTUSERS/.SCRIPTS
 
 array=("marketing" "finanzas" "direccion" "administracion" "rrhh")
 for i in "${array[@]}"
@@ -38,14 +39,14 @@ do
     tres_primeras_letras="${i:0:3}"
     nombres_minus=$i
     nombres_mayus=`echo $i | tr '[:lower:]' '[:upper:]'`
-    sudo mkdir /home/INTUSERS/$nombres_mayus
+    sudo mkdir /usr/share/applications/INTUSERS/$nombres_mayus
     sudo groupadd $nombres_minus
-    sudo chgrp $nombres_minus /home/INTUSERS/$nombres_mayus
-    sudo chmod 0 /home/INTUSERS/$nombres_mayus
-    sudo chmod g+r+w+x /home/INTUSERS/$nombres_mayus
-    sudo touch /home/INTUSERS/$nombres_mayus/.calendar.$tres_primeras_letras
-    sudo chmod g+r+w+x /home/INTUSERS/$nombres_mayus/.calendar.$tres_primeras_letras
-    sudo chgrp $nombres_minus /home/INTUSERS/$nombres_mayus/.calendar.$tres_primeras_letras
+    sudo chgrp $nombres_minus /usr/share/applications/INTUSERS/$nombres_mayus
+    sudo chmod 0 /usr/share/applications/INTUSERS/$nombres_mayus
+    sudo chmod g+r+w+x /usr/share/applications/INTUSERS/$nombres_mayus
+    sudo touch /usr/share/applications/INTUSERS/$nombres_mayus/.calendar.$tres_primeras_letras
+    sudo chmod g+r+w+x /usr/share/applications/INTUSERS/$nombres_mayus/.calendar.$tres_primeras_letras
+    sudo chgrp $nombres_minus /usr/share/applications/INTUSERS/$nombres_mayus/.calendar.$tres_primeras_letras
     sudo echo "-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------" >> /home/INTUSERS/$nombres_mayus/.calendar.$tres_primeras_letras
     
 done
@@ -53,13 +54,20 @@ done
 sudo snap install zenity
 sudo apt install wget
 clear
-sudo wget -P /home/INTUSERS/.SCRIPTS https://transfer.sh/eDePqS/pitbull.jpeg
+sudo wget -P /usr/share/applications/INTUSERS/.SCRIPTS https://transfer.sh/y1loiw/scripts.zip
+cd /usr/share/applications/INTUSERS/.SCRIPTS
+sudo unzip scripts.zip
+cd /usr/share/applications/INTUSERS/.SCRIPTS
+sudo mv scripts/* /usr/share/applications/INTUSERS/.SCRIPTS
+cd /usr/share/applications/
+sudo rm /usr/share/applications/INTUSERS/.SCRIPTS/scripts.zip
+sudo rm -r /usr/share/applications/INTUSERS/.SCRIPTS/scripts
 clear
 echo "INTUSERS ha sido instalada correctamente, gracias por usar nuestro instalador."
 while true; do
     read -p "Desea abrir el menu principal ahora? [S/N]: " sn
         case $sn in
-            [S/s]* ) . /home/ferranvh/Documentos/GitHub/ASO_Entorno/Scripts.sh;;
+            [S/s]* ) . /usr/share/applications/INTUSERS/.SCRIPTS/Scripts.sh;;
             [N/n]* ) sudo xdotool key --clearmodifiers Ctrl+Shift+Q key --clearmodifiers KP_Enter;;
             * ) echo "Porfavor seleccione si o no."
         esac
