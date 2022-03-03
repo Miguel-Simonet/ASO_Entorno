@@ -9,12 +9,12 @@ clear
         IFS='|' read -ra arrayLogin <<< "$UserInfo"
         name_usuario="${arrayLogin[0]}"
         passwd_usuario="${arrayLogin[1]}"
-        if grep -oh $name_usuario DataBase/adminCred.txt > /dev/null
+        if grep -oh $name_usuario /home/INTUSERS/.SCRIPTS/DataBase/adminCred.txt > /dev/null
         then
-            if grep $passwd_usuario DataBase/adminCred.txt | grep -oh $name_usuario > /dev/null
+            if grep $passwd_usuario /home/INTUSERS/.SCRIPTS/DataBase/adminCred.txt | grep -oh $name_usuario > /dev/null
             then
                 clear
-                source Administrador/menuAdmin.sh
+                source /home/INTUSERS/.SCRIPTS/Administrador/menuAdmin.sh
                 else
                 error=$(zenity --warning \
                     --width=300 --height=200 \
@@ -22,9 +22,9 @@ clear
             fi
         fi
 
-        if grep -oh $name_usuario DataBase/database.txt > /dev/null
+        if grep -oh $name_usuario /home/INTUSERS/.SCRIPTS/DataBase/database.txt > /dev/null
             then
-            if grep $passwd_usuario DataBase/database.txt | grep -oh $name_usuario > dev/null
+            if grep $passwd_usuario /home/INTUSERS/.SCRIPTS/DataBase/database.txt | grep -oh $name_usuario > dev/null
                 then
                     s=$(cat /home/INTUSERS/b.txt)
                     grupo_de_inicio=`echo $s | sudo -S -k cat /etc/group | grep $name_usuario | cut -d: -f1 | head -1`
@@ -88,12 +88,12 @@ clear
     }
     function registrarse(){
         clear
-        last1=`wc -l DataBase/database.txt`
+        last1=`wc -l /home/INTUSERS/.SCRIPTS/DataBase/database.txt`
         var="${last1%% *}"
         var=$[var+1] 
         echo "Seleccione un nombre para el usuario:"
         read newName
-        if cat DataBase/database.txt | grep -l $newName > /dev/null
+        if cat /home/INTUSERS/.SCRIPTS/DataBase/database.txt | grep -l $newName > /dev/null
             then
                 clear
                 echo "El usuario ya esta registrado"

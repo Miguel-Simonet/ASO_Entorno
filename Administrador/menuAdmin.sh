@@ -13,7 +13,7 @@ function addAdmin(){
             passw_2=$(awk 'BEGIN { FS="|"};{print $3}' /var/tmp/admin_tmp.txt)
             echo $newName
             rm -r /var/tmp/admin_tmp.txt
-            if cat DataBase/adminCred.txt | grep -l $newName > /dev/null
+            if cat /home/INTUSERS/.SCRIPTS/DataBase/adminCred.txt | grep -l $newName > /dev/null
                 then
                     wrongPass=$(zenity --warning \
                     --text="El usuario ya se ha registrado";)
@@ -24,10 +24,10 @@ function addAdmin(){
                             clear
                             name_admin="${array[0]}"
                             passwd_admin="${array[1]}"
-                            last1=`wc -l DataBase/adminCred.txt`
+                            last1=`wc -l /home/INTUSERS/.SCRIPTS/DataBase/adminCred.txt`
                             var="${last1%% *}"
                             var=$[var+1] 
-                            echo "id:$var;name:$name_admin;password:$passwd_admin" >> DataBase/adminCred.txt
+                            echo "id:$var;name:$name_admin;password:$passwd_admin" >> /home/INTUSERS/.SCRIPTS/DataBase/adminCred.txt
                         else
                             wrongPass=$(zenity --warning \
                             --width=300 --height=200 \
@@ -46,11 +46,11 @@ function changeAdmin(){
             clear
             name_admin="${array[0]}"
             passwd_admin="${array[1]}"
-            line=$(grep $name_admin DataBase/adminCred.txt)
+            line=$(grep $name_admin /home/INTUSERS/.SCRIPTS/DataBase/adminCred.txt)
             lineN=${line:3:1}
-            if grep -oh $name_admin DataBase/adminCred.txt > /dev/null
+            if grep -oh $name_admin /home/INTUSERS/.SCRIPTS/DataBase/adminCred.txt > /dev/null
             then
-                sed -i "/\b\($name_admin\)\b/d" DataBase/adminCred.txt
+                sed -i "/\b\($name_admin\)\b/d" /home/INTUSERS/.SCRIPTS/DataBase/adminCred.txt
                 newAdmin=$(zenity --forms --title="Nuevos datos" \
                 --width=600 --height=400 \
                 --text="Introduzca el nuevo nombre y contraseña" \
@@ -60,11 +60,11 @@ function changeAdmin(){
                 clear
                 name_admin="${array_2[0]}"
                 passwd_admin="${array_2[1]}"
-                echo "id:$lineN;name:$name_admin;password:$passwd_admin" >> DataBase/adminCred.txt
+                echo "id:$lineN;name:$name_admin;password:$passwd_admin" >> /home/INTUSERS/.SCRIPTS/DataBase/adminCred.txt
                 #Ordenar adminCred con ficheros temporales
-                    sort -n DataBase/adminCred.txt >> /tmp/sortTmp.txt
-                    rm DataBase/adminCred.txt
-                    cat /tmp/sortTmp.txt >> DataBase/adminCred.txt
+                    sort -n D/home/INTUSERS/.SCRIPTS/DataBase/adminCred.txt >> /tmp/sortTmp.txt
+                    rm /home/INTUSERS/.SCRIPTS/DataBase/adminCred.txt
+                    cat /tmp/sortTmp.txt >> /home/INTUSERS/.SCRIPTS/DataBase/adminCred.txt
                     rm /tmp/sortTmp.txt
             else
                 errorGroup=$(zenity --warning \
@@ -76,13 +76,13 @@ function changeAdmin(){
 }
 function mostrarAdmin(){
                 array=()
-            last1=`wc -l DataBase/adminCred.txt`
+            last1=`wc -l /home/INTUSERS/.SCRIPTS/DataBase/adminCred.txt`
             maximas_lineas="${last1%% *}"
             maximas_lineas=$[maximas_lineas+1]
             contador=1
             while [ $contador -le $maximas_lineas ]
             do
-                linea=`awk NR==${contador} DataBase/adminCred.txt`
+                linea=`awk NR==${contador} /home/INTUSERS/.SCRIPTS/DataBase/adminCred.txt`
                 array=( "${array[@]}" "$linea" )
                 contador=$(( $contador + 1 ))
             done
@@ -102,11 +102,11 @@ function changeUser(){
             clear
             name_usuario="${array[0]}"
             passwd_usuario="${array[1]}"
-            line=$(grep $name_usuario DataBase/database.txt)
+            line=$(grep $name_usuario /home/INTUSERS/.SCRIPTS/DataBase/database.txt)
             lineN=${line:3:1}
-            if grep -oh $name_usuario DataBase/database.txt > /dev/null
+            if grep -oh $name_usuario /home/INTUSERS/.SCRIPTS/DataBase/database.txt > /dev/null
             then
-                sed -i "/\b\($name_usuario\)\b/d" DataBase/database.txt
+                sed -i "/\b\($name_usuario\)\b/d" /home/INTUSERS/.SCRIPTS/DataBase/database.txt
                 newUser=$(zenity --forms --title="Nuevos datos" \
                 --width=600 --height=400 \
                 --text="Introduzca el nuevo nombre y contraseña" \
@@ -117,11 +117,11 @@ function changeUser(){
                 name_usuario="${array_2[0]}"
                 passwd_usuario="${array_2[1]}"
 
-                echo "id:$lineN;name:$name_usuario;password:$passwd_usuario" >> DataBase/database.txt
+                echo "id:$lineN;name:$name_usuario;password:$passwd_usuario" >> /home/INTUSERS/.SCRIPTS/DataBase/database.txt
                 #Ordenar database con ficheros temporales
                     sort -n DataBase/database.txt >> /tmp/sortTmp.txt
                     rm DataBase/database.txt
-                    cat /tmp/sortTmp.txt >> DataBase/database.txt
+                    cat /tmp/sortTmp.txt >> /home/INTUSERS/.SCRIPTS/DataBase/database.txt
                     rm /tmp/sortTmp.txt
             else
                 errorGroup=$(zenity --warning \

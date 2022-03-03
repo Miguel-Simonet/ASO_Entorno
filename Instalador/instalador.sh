@@ -23,16 +23,14 @@ clear
                 echo "Porfavor seleccione si o no."
             fi
 done
-cd /home
-echo $pass | sudo -S mkdir INTUSERS
-cd /home/INTUSERS
+echo $pass | sudo -S mkdir /home/INTUSERS
 echo $pass | sudo -S touch /home/INTUSERS/.b.txt
 echo $pass | sudo -S chmod o+w+x /home/INTUSERS/.b.txt
 echo $pass | sudo -S echo $pass >> /home/INTUSERS/.b.txt
 echo $pass | sudo -S chmod o-w /home/INTUSERS/.b.txt
-sudo mkdir .SCRIPTS 
-sudo chmod 0 .SCRIPTS
-sudo chmod o+r+x .SCRIPTS
+sudo mkdir /home/INTUSERS/.SCRIPTS 
+sudo chmod 0 /home/INTUSERS/.SCRIPTS
+sudo chmod o+r+x /home/INTUSERS/.SCRIPTS
 
 array=("marketing" "finanzas" "direccion" "administracion" "rrhh")
 for i in "${array[@]}"
@@ -40,11 +38,11 @@ do
     tres_primeras_letras="${i:0:3}"
     nombres_minus=$i
     nombres_mayus=`echo $i | tr '[:lower:]' '[:upper:]'`
-    sudo mkdir $nombres_mayus
+    sudo mkdir /home/INTUSERS/$nombres_mayus
     sudo groupadd $nombres_minus
-    sudo chgrp $nombres_minus $nombres_mayus
-    sudo chmod 0 $nombres_mayus
-    sudo chmod g+r+w+x $nombres_mayus
+    sudo chgrp $nombres_minus /home/INTUSERS/$nombres_mayus
+    sudo chmod 0 /home/INTUSERS/$nombres_mayus
+    sudo chmod g+r+w+x /home/INTUSERS/$nombres_mayus
     sudo touch /home/INTUSERS/$nombres_mayus/.calendar.$tres_primeras_letras
     sudo chmod g+r+w+x /home/INTUSERS/$nombres_mayus/.calendar.$tres_primeras_letras
     sudo chgrp $nombres_minus /home/INTUSERS/$nombres_mayus/.calendar.$tres_primeras_letras
