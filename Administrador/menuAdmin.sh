@@ -164,8 +164,8 @@ do
     "3" "Mostrar usuarios administradores" \
     "4" "Modificar usuarios" \
     "5" "Modificar grupos" \
-    "6" "Mostrar grupos"
-    "0" "Salir";)
+    "6" "Mostrar grupos" \
+    "7" "Salir";)
     # operate with the result of the menu
     case $menu in
         1) #For option 1...
@@ -186,7 +186,7 @@ do
         6)  #Opcion 6...
             mostrarGrupo
             ;;
-        0)  #To exit...
+        7)  #To exit...
             ((contador--))
             ;;
     esac

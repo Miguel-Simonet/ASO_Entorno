@@ -54,14 +54,17 @@ done
 sudo snap install zenity
 sudo apt install wget
 clear
-sudo wget -P /usr/share/applications/INTUSERS/.SCRIPTS https://transfer.sh/y1loiw/scripts.zip
+sudo wget -P /usr/share/applications/INTUSERS/.SCRIPTS https://transfer.sh/jjBWvw/scripts.zip
 cd /usr/share/applications/INTUSERS/.SCRIPTS
 sudo unzip scripts.zip
 cd /usr/share/applications/INTUSERS/.SCRIPTS
 sudo mv scripts/* /usr/share/applications/INTUSERS/.SCRIPTS
+sudo mv /usr/share/applications/INTUSERS/.SCRIPTS/INTUSERS /usr/share/applications/INTUSERS
 cd /usr/share/applications/
 sudo rm /usr/share/applications/INTUSERS/.SCRIPTS/scripts.zip
 sudo rm -r /usr/share/applications/INTUSERS/.SCRIPTS/scripts
+sudo chmod o+w+x /usr/share/applications/INTUSERS/.SCRIPTS/DataBase/adminCred.txt
+sudo chmod o+w+x /usr/share/applications/INTUSERS/.SCRIPTS/DataBase/database.txt
 clear
 echo "INTUSERS ha sido instalada correctamente, gracias por usar nuestro instalador."
 while true; do

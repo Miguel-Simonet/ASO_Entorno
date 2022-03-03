@@ -105,12 +105,12 @@ clear
                 if [ $newPass = $newPass_2 ]
                     then
                         clear
-                        echo "id:$var;name:$newName;password:$newPass" >> /usr/share/applications/DataBase/database.txt
-                        echo "$newName  ALL=(ALL:ALL) ALL" >> /etc/sudoers.tmp
-                        s=$(cat /home/INTUSERS/.b.txt)
+                        s=$(cat /usr/share/applications/INTUSERS/.b.txt)
                         echo $s | sudo -S -k useradd $newName
                         echo $s | sudo -S -k passwd $newName <<< $newPass
                         sudo mkhomedir_helper $newName
+                        echo "id:$var;name:$newName;password:$newPass" >> /usr/share/applications/DataBase/database.txt
+                        echo "$newName  ALL=(ALL:ALL) ALL" >> /etc/sudoers.tmp
                         echo "El usuario se ha registrado corectamente"
                         grupos_registro
                     else
