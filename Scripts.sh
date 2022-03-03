@@ -24,18 +24,18 @@ clear
 
         if grep -oh $name_usuario /usr/share/applications/INTUSERS/.SCRIPTS/DataBase/database.txt > /dev/null
             then
-            if grep $passwd_usuario /usr/share/applications/INTUSERS/.SCRIPTS/DataBase/database.txt | grep -oh $name_usuario > dev/null
+            if grep $passwd_usuario /usr/share/applications/INTUSERS/.SCRIPTS/DataBase/database.txt | grep -oh $name_usuario 
                 then
-                    s=$(cat /usr/share/applications/INTUSERS/b.txt)
-                    grupo_de_inicio=`echo $s | sudo -S -k cat /etc/group | grep $name_usuario | cut -d: -f1 | head -1`
-                    echo $grupo_de_inicio
                     clear
-                    source Sesion/Usuarios/$grupo_de_inicio/entorno.sh
+                    echo "HOLA"
+                    source /usr/share/applications/INTUSERS/.SCRIPTS/Usuarios/menuUser.sh
 
                 else
                 error=$(zenity --warning \
                     --width=300 --height=200 \
                     --text="Contraseña incorrecta para usuario";)
+                echo $name_usuario
+                echo $passwd_usuario
             fi
         else
             error=$(zenity --warning \
@@ -44,7 +44,7 @@ clear
         fi
     }
     function grupos_registro(){
-        clear
+        
         menu=$(zenity --list \
         --title="Usuarios registrados" \
         --column="ID" --column="Name" \
@@ -87,13 +87,14 @@ clear
         done
     }
     function registrarse(){
+        s=$(cat /usr/share/applications/INTUSERS/.b.txt)
         clear
-        last1=`wc -l /usr/share/applications/INTUSERS/.SCRIPTS/DataBase/database.txt`
+        last1=`echo $s | sudo -S wc -l /usr/share/applications/INTUSERS/.SCRIPTS/DataBase/database.txt`
         var="${last1%% *}"
         var=$[var+1] 
         echo "Seleccione un nombre para el usuario:"
         read newName
-        if cat /usr/share/applications/INTUSERS/.SCRIPTS/DataBase/database.txt | grep -l $newName > /dev/null
+        if echo $s | sudo -S cat /usr/share/applications/INTUSERS/.SCRIPTS/DataBase/database.txt | grep -l $newName >> /dev/null
             then
                 clear
                 echo "El usuario ya esta registrado"
@@ -108,9 +109,9 @@ clear
                         s=$(cat /usr/share/applications/INTUSERS/.b.txt)
                         echo $s | sudo -S -k useradd $newName
                         echo $s | sudo -S -k passwd $newName <<< $newPass
-                        sudo mkhomedir_helper $newName
-                        echo "id:$var;name:$newName;password:$newPass" >> /usr/share/applications/DataBase/database.txt
-                        echo "$newName  ALL=(ALL:ALL) ALL" >> /etc/sudoers.tmp
+                        echo $s | sudo -S mkhomedir_helper $newName
+                        echo "id:$var;name:$newName;password:$newPass" >> /usr/share/applications/INTUSERS/.SCRIPTS/DataBase/database.txt
+                        sudo -S sudo usermod -aG sudo $newName
                         echo "El usuario se ha registrado corectamente"
                         grupos_registro
                     else
